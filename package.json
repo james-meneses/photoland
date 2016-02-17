@@ -1,0 +1,40 @@
+{
+  "name": "wisteria-app",
+  "version": "1.0.0",
+  "description": "Getting to know AngularJS web app dev with Bootstrap UI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "wisteria-app"
+  },
+  "keywords": [
+    "angularjs",
+    "ui",
+    "bootstrap"
+  ],
+  "author": "James <jhemerson.comercial@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "browserify": "^13.0.0",
+    "compass-importer": "^0.2.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.2",
+    "gulp-util": "^3.0.7",
+    "jshint": "^2.9.1",
+    "sassdoc": "^2.1.20",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-ui-bootstrap": "^1.1.2"
+  }
+}
