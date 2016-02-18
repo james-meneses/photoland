@@ -2,37 +2,39 @@
 <html lang="pt-BR" ng-app="app">
 <head>
 	<meta charset="UTF-8">
-	<title>Valerie</title>
+	<title>Valerie | Services</title>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/paper/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/main.css">
+	
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
 	<script src="/js/main.js"></script>
 </head>
 <body>
-	<div ng-controller="MyController">
+	<div>
 		<main class="main">
 			<div class="container">
-				<h1 class="subtitle alone">Mensagens: {{ msgs.length }}</h2>
 				<div class="row">
-					<div class="col-md-4">
-						<ul class="list-group  alone">
-							<li class="list-group-item" ng-repeat="msg in msgs"> {{ msg }}</li>
+					<div class="col-md-6">
+						<h1 class="title">Services</h1>
+						<p class="text-muted">Adicione mensagens</p>
+						<ul class="list-group" ng-controller="ListCtrl as list">
+							<li class="list-group-item" ng-repeat="msg in list.messages">
+								{{ msg.id }}: {{ msg.text }}
+							</li>
 						</ul>
+					
+						<div  ng-controller="PostCtrl as post">
+							<form ng-submit="post.addMessage(post.newMessage)">
+								<input type="text" class="form-control" ng-model="post.newMessage">
+								<button class="btn btn-primary alone" type="submit">Add Mensagem</button>
+							</form>
+						</div>
+
 					</div>
 				</div>
-				<div class="row">
-				
-					<form ng-submit="callNotify(message)" class="form input-group col-md-4">
-						<input class="form-control input" type="text" ng-init="message = test" ng-model="message" >
-						<button class="btn btn-primary alone" type="submit">Notificar</button>
-					</form>
-					
-
-				</div>
-				<!-- END row -->
-			</div>
-		</main>
+			</div><!-- END .container -->
+		</main><!-- END main -->
 	</div>
 </body>
 </html>

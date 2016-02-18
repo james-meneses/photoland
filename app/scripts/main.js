@@ -3,24 +3,32 @@
 
 	var app = angular.module('app', []);
 
-	app.controller('MyController', ['$scope', 'notify', function($scope, notify){
-		$scope.msgs = [];
+	app.factory('messages', function(){
+		var messages = {};
 
-		$scope.callNotify = function(msg){
-			notify($scope.msgs, msg);
-			$scope.message = "";
-			$scope.msgs = $scope.msgs.length == 3 ? [] : $scope.msgs;
+		messages.list = [];
+		messages.add = function(msg) {
+			messages.list.push({id: messages.list.length, text: msg});
 		};
-	}]).
-		factory('notify', ['$window', function(win){
-			return function(msgs, msg) {
-				msgs.push(msg);
 
-				if( msgs.length == 3) {
-					win.alert(msgs.join('\n'));
-					msgs = [];
-				}
-			}
-		}]);
+		return messages;
+	});
+
+	app.controller('ListCtrl', function (messages) {
+		var self = this;
+
+		self.messages = messages.list;
+	});
+
+	app.controller('PostCtrl', function (messages) {
+		var self = this;
+		self.newMessage = 'You know nothing, Jon Snow';
+		
+		self.addMessage = function(message) {
+			messages.add(message);
+			self.newMessage = '';
+		};
+
+	});
 
 }) ();
