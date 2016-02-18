@@ -1,9 +1,9 @@
 // require('angular')
 (function(){
-	require('./controllers/MainController')
+	var FormController = require('./controllers/FormController');
 
-	var app = angular.module('app', []);
+	var app = angular.module('app', ['ui.bootstrap']);
 
-	app.controller('MainController', MainController);
+	app.controller('FormController', ['$scope', FormController]);
 
 }) ();

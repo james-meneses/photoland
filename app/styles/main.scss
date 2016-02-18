@@ -10,6 +10,9 @@
 
 // @import "../vendor/bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "radio_OVERRIDE";
+@import "checkbox_OVERRIDE";
+
 body {
 	padding: 20px 16px;
 }
@@ -25,4 +28,11 @@ body {
 
 .code-partial {
 	margin: 15px 0;
+}
+
+
+/* Forms Styles */
+.input-alert {
+	float: right;
+	margin-right: 1em;
 }
