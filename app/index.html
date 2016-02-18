@@ -2,11 +2,13 @@
 <html lang="pt-BR" ng-app="app">
 <head>
 	<meta charset="UTF-8">
-	<title>Valerie | Services</title>
+	<title>Valerie | Forms</title>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/paper/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/main.css">
 	
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+	<!-- For Localization -->
+	<script src="https://code.angularjs.org/1.5.0/i18n/angular-locale_pt-br.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
 	<script src="/js/main.js"></script>
 </head>
@@ -16,20 +18,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6">
-						<h1 class="title">Services</h1>
-						<p class="text-muted">Adicione mensagens</p>
-						<ul class="list-group" ng-controller="ListCtrl as list">
-							<li class="list-group-item" ng-repeat="msg in list.messages">
-								{{ msg.id }}: {{ msg.text }}
-							</li>
-						</ul>
-					
-						<div  ng-controller="PostCtrl as post">
-							<form ng-submit="post.addMessage(post.newMessage)">
-								<input type="text" class="form-control" ng-model="post.newMessage">
-								<button class="btn btn-primary alone" type="submit">Add Mensagem</button>
-							</form>
-						</div>
+						<h1 class="title">Forms</h1>
+						
 
 					</div>
 				</div>
