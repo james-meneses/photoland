@@ -10,49 +10,25 @@
 	<script src="/js/main.js"></script>
 </head>
 <body>
-	<div ng-controller="MainController">
+	<div ng-controller="MyController">
 		<main class="main">
 			<div class="container">
-				<h1 class="subtitle">{{ message }}</h2>
-
+				<h1 class="subtitle alone">Mensagens: {{ msgs.length }}</h2>
 				<div class="row">
-					<h2 class="">Buttons</h2>
-					<div class="btn-group" data-toggle="buttons">
-						<label class="btn btn-primary" ng-model="bigData.breakfast" btn-checkbox>
-							Breakfast
-						</label>
-						<label class="btn btn-primary" ng-model="bigData.lunch" btn-checkbox>
-							Lunch
-						</label>
-						<label class="btn btn-primary" ng-model="bigData.dinner" btn-checkbox>
-							Dinner
-						</label>
-					</div>
-	
-					<div class="row code-partial">
-						<pre><code>{{ bigData | json }}</code></pre>
+					<div class="col-md-4">
+						<ul class="list-group  alone">
+							<li class="list-group-item" ng-repeat="msg in msgs"> {{ msg }}</li>
+						</ul>
 					</div>
 				</div>
-				
-				<hr />
-					
 				<div class="row">
-					<h2 class="">Collapse</h2>
-					<a href="#" id="btn-toggle-panel" class="btn btn-primary alone" ng-click="toggleCollapse(); $event.preventDefault()">Toggle Panel</a>
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a href="#" ng-click="isCollapsed = !isCollapsed">
-									Collapsible Group Item #1
-								</a>
-							</h4>
-						</div>
+				
+					<form ng-submit="callNotify(message)" class="form input-group col-md-4">
+						<input class="form-control input" type="text" ng-init="message = test" ng-model="message" >
+						<button class="btn btn-primary alone" type="submit">Notificar</button>
+					</form>
+					
 
-						<div collapse="isCollapsed">
-							<div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium magnam et omnis necessitatibus? Debitis dolorum iure totam explicabo amet corrupti quaerat non minima. Expedita non beatae adipisci libero iste dolor.</div>
-						</div>
-					</div>
-					<!-- END panel -->
 				</div>
 				<!-- END row -->
 			</div>

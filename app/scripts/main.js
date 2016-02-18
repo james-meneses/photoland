@@ -1,7 +1,26 @@
 // require('angular')
+(function(){
 
-var MainController = require('./controllers/MainController')
+	var app = angular.module('app', []);
 
-var app = angular.module('app', ['ui.bootstrap'])
+	app.controller('MyController', ['$scope', 'notify', function($scope, notify){
+		$scope.msgs = [];
 
-app.controller('MainController', ['$scope', MainController]) 
+		$scope.callNotify = function(msg){
+			notify($scope.msgs, msg);
+			$scope.message = "";
+			$scope.msgs = $scope.msgs.length == 3 ? [] : $scope.msgs;
+		};
+	}]).
+		factory('notify', ['$window', function(win){
+			return function(msgs, msg) {
+				msgs.push(msg);
+
+				if( msgs.length == 3) {
+					win.alert(msgs.join('\n'));
+					msgs = [];
+				}
+			}
+		}]);
+
+}) ();
