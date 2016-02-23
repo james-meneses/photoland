@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="col-md-6" ng-controller="FunCtrl as fun">
 						<h1 class="title">Directives</h1>
-						<div entering leaving>Sarra o mouse no grau, passa com gosto por cima!</div>
+						<div entering="fun.start()" leaving="fun.end()">Sarra o mouse no grau, passa com gosto por cima!</div>
 						
 					</div><!-- END half-width collumn -->
 
