@@ -1,39 +1,61 @@
 // require('angular')
 (function(){
 
-	function FunCtrl() {
-		var self = this;
-
-		this.start = function() {
-			console.log("Here comes the fun!");
-		}
-
-		this.end = function() {
-			console.log("Fuck! The fun is over.");
-		}
-	}
-
 	var app = angular.module('app', []);
 
-	app.controller('FunCtrl', FunCtrl);
-
 	app
-	.directive('entering', function() {
-		return function(scope, element, attrs) {
-			element.bind('mouseenter', function() {
-				// It's better that the directive don't know much about the directive. Keep them separated
-				// Avoid doing smth like: scope.fun.start()
-				// Instead use scope.$apply(), like so
-				scope.$apply(attrs.entering)
-			})
+	.directive('welcome', function() {
+		return {
+			restrict: 'E',
+			// Below we isolate the scope, so that each directive instance has its own local scope
+			scope: {},
+			controller: function($scope) {
+				var self = this;
+				$scope.words = [];
+
+				self.greetBitch = function() {
+					$scope.words.push("Hey bitch, I came to slay")
+				}
+				self.greetLady = function () {
+					$scope.words.push("Hey pretty little lady")
+				}
+				self.greetLonelyGirl = function() {
+					$scope.words.push("Hey there lonely girl")
+				}
+			},
+			link: function(scope, element){
+				element.bind('mouseenter', function(){
+					console.log(scope.words);
+				})
+			}
 		}
 	})
-	.directive('leaving', function() {
-		return function(scope, element, attrs){
-			element.bind('mouseleave', function() {
-				// As in the entering event, here we do the same, just changing the method to be called
-				scope.$apply(attrs.leaving)
-			})
+
+	app.directive('lady', function(){
+		return {
+			require: 'welcome',
+			link: function(scope, element, attrs, welcomeCtrl) {
+				welcomeCtrl.greetLady();
+			}
+		}
+	})
+
+
+	app.directive('bitch', function() {
+		return {
+			require: 'welcome',
+			link: function(scope, element, attrs, welcomeCtrl) {
+				welcomeCtrl.greetBitch();
+			}
+		}
+	})
+
+	app.directive("lonelygirl", function() {
+		return {
+			require: 'welcome',
+			link: function(scope, element, attrs, welcomeCtrl) {
+				welcomeCtrl.greetLonelyGirl();
+			}
 		}
 	})
 
