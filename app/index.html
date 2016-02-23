@@ -2,7 +2,7 @@
 <html lang="pt-BR" ng-app="app">
 <head>
 	<meta charset="UTF-8">
-	<title>Valerie | Filters</title>
+	<title>Valerie | Directives</title>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/paper/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/main.css">
 	
@@ -16,25 +16,12 @@
 	<div>
 		<main class="main">
 			<div class="container">
-				<div class="row" ng-controller="TestCtrl as test">
+				<div class="row">
 					<div class="col-md-6" >
-						<h1 class="title">Filters</h1>
-						<form ng-submit="test.addPerson(test.name, test.species)" class="form-horizontal" name="form" novalidate>
-							<input class="form-control" name="name" ng-model="test.name" placeholder="Nome" type="text">
-							<input type="text" class="form-control alone" name="species" ng-model="test.species" placeholder="Espécie">
-							<button class="btn btn-primary alone" type="submit" style="float: right">Adicionar</button>
-						</form>
+						<h1 class="title">Directives</h1>
+						<div welcome goodbye></div>
 						
 					</div><!-- END half-width collumn -->
-					
-					<div class="col-md-6">
-						<input class="form-control alone" placeholder="Pesquisar..." type="text" ng-model="search.name">
-						<ul class="list-group">
-							<li class="list-group-item" ng-repeat="person in test.people | filter: search">
-								{{ person.name }} - {{ person.species }}
-							</li>
-						</ul>
-					</div>
 
 				</div>
 			</div><!-- END .container -->
