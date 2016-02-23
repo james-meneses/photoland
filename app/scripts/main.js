@@ -3,19 +3,19 @@
 
 	var app = angular.module('app', []);
 
-	app.directive("welcome", function() {
-		return {
-			restrict: "A",
-			link: function() {
-				alert("Hey there!");
-			}
+	app
+	.directive('entering', function() {
+		return function(scope, element, attrs) {
+			element.bind('mouseenter', function() {
+				element.addClass(attrs.entering)
+			})
 		}
-	}).directive("goodbye", function() {
-		return {
-			restrict: "A",
-			link: function() {
-				alert("Hora de dizer adeus!");
-			}
+	})
+	.directive('leaving', function() {
+		return function(scope, element, attrs){
+			element.bind('mouseleave', function() {
+				element.removeClass(attrs.entering)
+			})
 		}
 	})
 

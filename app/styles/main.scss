@@ -41,3 +41,7 @@ body {
 .red {
 	color: #a00;
 }
+
+.activeClass {
+	@extend .red;
+}
