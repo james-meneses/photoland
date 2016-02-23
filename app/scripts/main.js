@@ -1,34 +1,29 @@
 // require('angular')
 (function(){
 
-	function asyncGreet(name) {
-		var deferred = $q.defer();
+	function TestCtrl() {
+		var self = this;
+		self.myString = "Hello world";
+		self.email = "";
+	}
 
-		setTimeout(function() {
-			deferred.notify('About to greet ' + name);
+	function CapitalizeFilter() {
+		return function (text) {
+			return text.toUpperCase() ;
+		}
+	}
 
-			if(okToGreet(name)) {
-				deferred.resolve('Hey, ' + name + '!');
-			} else {
-				deferred.reject('I don\'t wanna greet you ' + name + ', bitch!');
-			}
-
-		}, 1000);
-
-		return deferred.promise;
+	function IsValidEmail() {
+		return function(email) {
+			return /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i.test(email) ? "Válido" : "Inválido";
+		}
 	}
 
 	var app = angular.module('app', []);
 
-	var promise = asyncGreet("Valerie");
-	
-	// In this case, besides success and error, we might set an 'common behavior' at the end
-	promise.then(function(greeting) {
-		console.log('Succes! ', greeting);
-	}, function(reason) {
-		console.log('Error! ', reason);
-	}, function(update) {
-		console.log('But, ', update);
-	});
+	app.controller('TestCtrl', TestCtrl);
+
+	app.filter('capitalize', CapitalizeFilter);
+	app.filter('validEmail', IsValidEmail);
 
 }) ();
