@@ -2,27 +2,33 @@
 (function(){
 
 	function asyncGreet(name) {
-		return $q(function(resolve, reject){
-			setTimeout(function() {
-				if(mightGreet(name)){
-						resolve('Olá, ' + name + '!' );
-					} else {
-						reject('Não foi possível dizer olá para ' + name + '!');
-					}
-				}, 1000);
-		})
+		var deferred = $q.defer();
+
+		setTimeout(function() {
+			deferred.notify('About to greet ' + name);
+
+			if(okToGreet(name)) {
+				deferred.resolve('Hey, ' + name + '!');
+			} else {
+				deferred.reject('I don\'t wanna greet you ' + name + ', bitch!');
+			}
+
+		}, 1000);
+
+		return deferred.promise;
 	}
 
 	var app = angular.module('app', []);
 
-	var promise = asyncGreet("James");
-	// We get promise from the asyncGreet method return(retrieved by the service $q)
-	// So we use it, setting a callback function in case of success
-	// And optionally, we might also set a callback function in case something goes wrong
-	promise.then(function(greeting){
-		console.log('Success! ' + greeting);
+	var promise = asyncGreet("Valerie");
+	
+	// In this case, besides success and error, we might set an 'common behavior' at the end
+	promise.then(function(greeting) {
+		console.log('Succes! ', greeting);
 	}, function(reason) {
-		console.log('Error! ' + reason);
+		console.log('Error! ', reason);
+	}, function(update) {
+		console.log('But, ', update);
 	});
 
 }) ();
