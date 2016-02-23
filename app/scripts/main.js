@@ -1,32 +1,28 @@
 // require('angular')
 (function(){
 
-	function getData($timeout, $q) {
-		return function() {
-			return $q(function(resolve, reject){
-				$timeout(function(){
-					resolve(Math.floor(Math.random() * 10))
-				}, 2000)
-			})
-		}
+	function asyncGreet(name) {
+		return $q(function(resolve, reject){
+			setTimeout(function() {
+				if(mightGreet(name)){
+						resolve('Olá, ' + name + '!' );
+					} else {
+						reject('Não foi possível dizer olá para ' + name + '!');
+					}
+				}, 1000);
+		})
 	}
 
 	var app = angular.module('app', []);
 
-	app
-	   .factory('getData', getData)
-	   .run(function(getData){
-	   		var promise = getData()
-	   			.then(function(num) {
-	   				console.log(num)
-	   				return num * 2
-	   			})
-	   			.then(function(num) {
-	   				console.log(num)
-	   			})
-	   			.finally(function() {
-	   				console.log('Finished at ', new Date())
-	   			});
-	   })
+	var promise = asyncGreet("James");
+	// We get promise from the asyncGreet method return(retrieved by the service $q)
+	// So we use it, setting a callback function in case of success
+	// And optionally, we might also set a callback function in case something goes wrong
+	promise.then(function(greeting){
+		console.log('Success! ' + greeting);
+	}, function(reason) {
+		console.log('Error! ' + reason);
+	});
 
 }) ();
