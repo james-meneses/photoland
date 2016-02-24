@@ -2,7 +2,7 @@
 <html lang="pt-BR" ng-app="app">
 <head>
 	<meta charset="UTF-8">
-	<title>Valerie | Directives</title>
+	<title>Tabs Directive</title>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/paper/bootstrap.min.css">
 	<link rel="stylesheet" href="/css/main.css">
 	
@@ -17,13 +17,20 @@
 		<main class="main">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6">
-						<h1 class="title">Directives</h1>
-						<welcome>
-							<button class="btn btn-primary alone">Clique aqui</button>
-						</welcome>
-					</div><!-- END half-width collumn -->
 
+					<h1 class="title">Tabs, tabs, tabs!</h1>
+
+					<tabset>
+						<tab heading="The Weeknd">
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum necessitatibus minima repudiandae earum quo repellendus animi dolor rerum adipisci totam quod aut voluptatibus voluptas deleniti, harum incidunt velit mollitia distinctio!
+						</tab>
+						<tab heading="Lana del Rey">
+							Just for test!
+						</tab>
+						<tab heading="Melanie Martinez" disable="true">
+							lorem for Melanie Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae dolorem voluptate dolorum corporis suscipit adipisci pariatur quisquam voluptatibus quam. Labore, neque, possimus. Quas labore, earum distinctio eos hic neque voluptatum?
+						</tab>
+					</tabset>
 				</div>
 			</div><!-- END .container -->
 		</main><!-- END main -->

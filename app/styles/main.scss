@@ -13,6 +13,7 @@
 @import "input_OVERRIDE";
 @import "radio_OVERRIDE";
 @import "checkbox_OVERRIDE";
+@import "tabs_OVERRIDE";
 
 body {
 	padding: 20px 16px;
@@ -45,3 +46,6 @@ body {
 .activeClass {
 	@extend .red;
 }
+
+
+// Some Personal Custom Overridings(over Twitter Bootstrap)
