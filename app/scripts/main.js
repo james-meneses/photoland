@@ -30,7 +30,11 @@
 		return {
 			restrict: 'E',
 			transclude: true,
-			scope: { },
+			scope: { 
+				type: '@',
+				vertical: '@',
+				justified: '@'
+			},
 			templateUrl: 'tabset.html',
 			bindToController: true,
 			controllerAs: 'tabset',
@@ -40,9 +44,13 @@
 
 				self.addTab = function addTab(tab) {
 					self.tabs.push(tab)
-
 					tab.active = self.tabs.length === 1
 				}
+
+				self.classes = {}
+				self.type === 'tabs' ? ( self.classes['nav-tabs']  = true ) : ( self.classes['nav-pills'] = true )
+				if( self.justified ) self.classes['nav-justified'] = true
+				if( self.vertical  ) self.classes['nav-stacked']   = true
 
 				self.select = function (selectedTab) {
 					if( selectedTab.disabled ) return
