@@ -1,69 +1,52 @@
 ;(function(window) {
+	
+	var TableCtrl = require('./scripts/controller/TableController')
 
-	var app = angular.module('app', [])
+	var app = angular.module('app', ['ui.bootstrap', 'ngAnimate', 'ui.router'])
 
-	app.directive('tab', function() {
-		return{
-			restrict: 'E',
-			transclude: 'true',
-			template: '<div role="tabpanel" class="alone" ng-show="active" ng-transclude></div>',
-			require: '^tabset',
-			scope: { 
-				heading: '@'
-			},
-			link: function(scope, elem, attr, tabsetCtrl) {
-				scope.active = false
+	app.config(function($stateProvider, $urlRouterProvider) {
+			
+			$urlRouterProvider.otherwise('/home')
 
-				scope.disabled = false
+			$stateProvider
 
-				if( attr.disable ) {
-					attr.$observe('disable', function(value) {
-						scope.disabled = ( value === 'true' )
-					})
-				}
+				// HOME STATES AND NESTED VIEWS
+				.state('home', {
+					url: '/home',
+					templateUrl: './partials/partial-home.html'
+				})
 
-				tabsetCtrl.addTab(scope)
-			}
-		}
-	})
-	.directive('tabset', function() {
-		return {
-			restrict: 'E',
-			transclude: true,
-			scope: { 
-				type: '@',
-				vertical: '@',
-				justified: '@'
-			},
-			templateUrl: 'tabset.html',
-			bindToController: true,
-			controllerAs: 'tabset',
-			controller: function() {
-				var self  = this
-				self.tabs = []
+				.state('home.list', {
+					url: '/list',
+					templateUrl: './partials/partial-home-list.html', 
+					controller : function($scope) {
+						$scope.dogs = ['Bernese', 'Husky', 'Goldendoodle']
+					}
+				})
 
-				self.addTab = function addTab(tab) {
-					self.tabs.push(tab)
-					tab.active = self.tabs.length === 1
-				}
+				.state('home.paragraph', {
+					url: '/paragraph', 
+					template: 'I could sure use a drink right nowo'
+				})
 
-				self.classes = {}
-				self.type === 'tabs' ? ( self.classes['nav-tabs']  = true ) : ( self.classes['nav-pills'] = true )
-				if( self.justified ) self.classes['nav-justified'] = true
-				if( self.vertical  ) self.classes['nav-stacked']   = true
+				// ABOUT PAGE AND MUTIPLE NAMED VIEWS  
+				.state('about', {
+					views: {
+						// the main template will be placed here (relatively named)
+						'': { templateUrl: './partials/partial-about.html' },
 
-				self.select = function (selectedTab) {
-					if( selectedTab.disabled ) return
-					
-					self.tabs.forEach(function(el) {
-						el.active = false
-					})
+						//  the child views will be defined here (absolutely named)
+						'columnOne@about': { template: 'Look I\'m a column!' },
 
-					selectedTab.active = true
-				}
+						// for column two, we'll define a separate controller
+						'columnTwo@about' : {
+							templateUrl : 'table-data.html',
+							controller  : 'TableCtrl'
+						}
+					}
+				})
+	}) // closes app.config()
 
-			}
-		}
-	});
+	app.controller('TableCtrl', TableCtrl)
 
 })(window);

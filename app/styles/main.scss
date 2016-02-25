@@ -10,10 +10,17 @@
 
 // @import "../vendor/bootstrap-sass/assets/stylesheets/bootstrap";
 
-@import "input_OVERRIDE";
-@import "radio_OVERRIDE";
-@import "checkbox_OVERRIDE";
-@import "tabs_OVERRIDE";
+// @import "input_OVERRIDE";
+// @import "radio_OVERRIDE";
+// @import "checkbox_OVERRIDE";
+// @import "tabs_OVERRIDE";
+@import 'compass';
+@import 'compass/css3';
+
+@import 'mixins';
+
+@import 'variables';
+@import 'paper';
 
 body {
 	padding: 20px 16px;

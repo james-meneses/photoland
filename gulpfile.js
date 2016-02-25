@@ -20,7 +20,7 @@ var gulp         = require('gulp'),
 /* Settings */
 var config = {
     src : {
-        html    : './app/*.html',
+        html    : './app/**/*.html',
         styles  : './app/styles/**/*.{scss, sass}',
         scripts : './app/scripts/**/*.js',
         images  : './app/images/**/*.*',
@@ -55,7 +55,7 @@ gulp.task( 'scripts', function() {
 gulp.task( 'styles', function() {
     gulp.src( config.src.styles )
         /*.pipe(sourcemaps.init())*/
-            .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+            .pipe(sass({outputStyle: 'compressed', importer: compass}).on('error', sass.logError))
         /*.pipe(sourcemaps.write(config.dest.maps))*/
         /*.pipe(autoprefixer({ browsers: ['last 3 versions'] }))*/
         .pipe(gulp.dest(config.dest.css))
