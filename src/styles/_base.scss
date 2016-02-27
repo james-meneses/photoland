@@ -1,0 +1,32 @@
+
+body {
+	padding: 20px 16px;
+}
+
+.subtitle {
+	margin-bottom: 20px;
+}
+
+.alone {
+	clear: both;
+	margin: 1em 0;
+}
+
+.code-partial {
+	margin: 15px 0;
+}
+
+
+/* Forms Styles */
+.input-alert {
+	float: right;
+	margin-right: 1em;
+}
+
+.red {
+	color: #a00;
+}
+
+.activeClass {
+	@extend .red;
+}

@@ -1,0 +1,19 @@
+<!-- PARTIAL PhotoLand -->
+<div class="jumbotron text-center">
+	<h1>PhotoLand</h1>
+	<p>Web App desenvolvido em AngularJS. Utiliza a API de imagens do GettyImages. Você pode clicar nos filtros pré-definidos ou utilizar o campo de pesquisa para filtar as imagens.</p>
+</div>
+
+
+<div class="grid img-grid gallery" >
+	<div class="row" >
+		<div class="text-center alone">
+				<button class="btn btn-primary" ng-click="loadImages()">Carregar imagens</button>
+			</div>
+	</div>
+	
+	<div class="row gallery-row" ng-repeat="photoRow in photoRows">	
+		<photo class="item gallery-item item--col-3x3" ng-repeat="img in photoRow.images">
+		</photo>
+	</div>
+</div>

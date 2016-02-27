@@ -1,0 +1,12 @@
+<!-- Table Data View -->
+<h2 class="subtitle">Scotches Table</h2>
+<table class="table table-striped" ng-controller="TableCtrl">
+	<thead>
+		<td class="col-sm-6">Drink</td>
+		<td class="col-sm-6">Price</td>
+	</thead>
+	<tr ng-repeat="scotch in scotches">
+		<td class="col-sm-6" > {{ scotch.name }} </td>
+		<td class="col-sm-6" > {{ scotch.price | currency }} </td>
+	</tr>
+</table>

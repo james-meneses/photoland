@@ -1,0 +1,44 @@
+/* ======================================================== *\
+	PhotoLand App Styles
+\* ======================================================== */
+
+%truncate {
+  width: 250px;
+  height: 5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Images
+.gallery {
+	margin: 30px 0 0;
+
+	.gallery-row {
+		margin: 0 auto 15px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.item {
+		width: 360px;
+		list-style-type: none;
+		padding: 10px 20px;
+		background: #ccc;
+		box-sizing: border-box;
+
+		img {
+			margin: 0 auto 10px;
+			display: block;
+			border: 1px solid #aaa;
+			box-shadow: 2px 2px 5px #ccc;
+		}
+		
+		.info {
+			text-align: justify;
+			@extend %truncate;
+			width: 300px;
+		}
+		
+	}
+
+}

@@ -20,11 +20,11 @@ var gulp         = require('gulp'),
 /* Settings */
 var config = {
     src : {
-        html    : './app/**/*.html',
-        styles  : './app/styles/**/*.{scss, sass}',
-        scripts : './app/scripts/**/*.js',
-        images  : './app/images/**/*.*',
-        vendor  : './app/vendor/**/*'
+        html    : './src/**/*.html',
+        styles  : './src/styles/**/*.{scss, sass}',
+        scripts : './src/app/**/*.js',
+        images  : './src/images/**/*.*',
+        vendor  : './src/vendor/**/*'
     },
     dest : {
         html   : './dest/',
@@ -55,7 +55,7 @@ gulp.task( 'scripts', function() {
 gulp.task( 'styles', function() {
     gulp.src( config.src.styles )
         /*.pipe(sourcemaps.init())*/
-            .pipe(sass({outputStyle: 'compressed', importer: compass}).on('error', sass.logError))
+            .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         /*.pipe(sourcemaps.write(config.dest.maps))*/
         /*.pipe(autoprefixer({ browsers: ['last 3 versions'] }))*/
         .pipe(gulp.dest(config.dest.css))
@@ -91,7 +91,7 @@ gulp.task( 'vendor', function() {
 
 gulp.task('browserify', function() {
     // Grabs the app.js file
-    browserify('./app/scripts/main.js')
+    browserify('./src/app/main.js')
         // bundles it and creates a file called main.js
         .bundle()
         .on('error', function(e) {
