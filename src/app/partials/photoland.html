@@ -5,15 +5,21 @@
 </div>
 
 
-<div class="grid img-grid gallery" >
-	<div class="row" >
-		<div class="text-center alone">
-				<button class="btn btn-primary" ng-click="loadImages()">Carregar imagens</button>
+<section id="photoland-gallery" class="grid img-grid gallery" >
+	<header class="row header gallery__header" >
+		<div class="col-md-4 centered text-centered alone">
+			<input type="text" class="form-control alone text-centered" ng-model="keyword" name="keyword">
+			<div class="alone">
+				<button class="btn btn-primary button-load" ng-click="loadImages(keyword)">Carregar imagens</button>
 			</div>
-	</div>
+		</div>
+	</header>
 	
-	<div class="row gallery-row" ng-repeat="photoRow in photoRows">	
-		<photo class="item gallery-item item--col-3x3" ng-repeat="img in photoRow.images">
-		</photo>
+	<div class="content gallery__content">
+		<div class="row gallery-row animated bounceIn" ng-repeat="photoRow in photoRows">	
+			<photo class="item gallery-item item--col-3x3 animated animate bounce" ng-repeat="img in photoRow.images">
+			</photo>
+		</div>
 	</div>
-</div>
+
+</section>

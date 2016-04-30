@@ -5,11 +5,14 @@ module.exports = function($scope, $http, $q, $log, imageService){
 	$scope.photoRows = []
 	$scope.times = 0
 
-	$scope.loadImages = function() {
-		console.log('we gonna load images')
+	$scope.loadImages = function(filter) {
+		console.log(filter, typeof filter )
+		filter = (typeof filter == "string") ? filter : 'nature' 
+
+		console.log('we gonna load images of ', filter)
 
 		var img = new Image()
-		var promise = imageService.getImages('nature')
+		var promise = imageService.getImages(filter)
 
 		promise.then(
 			function(res) {

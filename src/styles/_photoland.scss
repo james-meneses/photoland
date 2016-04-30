@@ -2,12 +2,32 @@
 	PhotoLand App Styles
 \* ======================================================== */
 
+.centered {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	
+	&[class^=col] {
+		float: none;
+	}
+}
+
+.text-centered {
+	text-align: center;
+}
+
 %truncate {
   width: 250px;
   height: 5em;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.button-load {
+	margin-bottom: 20px;
+}
+
+
 
 // Images
 .gallery {
@@ -22,8 +42,10 @@
 	.item {
 		width: 360px;
 		list-style-type: none;
-		padding: 10px 20px;
-		background: #ccc;
+		padding: 25px 20px;
+		background: #eee;
+		border: 1px solid #ddd;
+		box-shadow: 1px 1px 5px -2px rgba(0,0,0,0.3);
 		box-sizing: border-box;
 
 		img {
@@ -36,9 +58,35 @@
 		.info {
 			text-align: justify;
 			@extend %truncate;
-			width: 300px;
+			width: 100%;
 		}
 		
 	}
+	
+}
 
+.gallery__content{
+	.item {
+		transition: 0.35s opacity linear;
+		.description {
+			padding: 20px;
+		    margin: 20px 0 0;	
+		    background: #fff;
+		}
+
+		&:hover {
+			animation: 0.5s bounce;
+		}
+	}
+
+	&:hover {
+		.item{
+			opacity: 0.6;
+			transition: 0.35s opacity linear;
+			
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
 }
