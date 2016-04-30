@@ -1,21 +1,23 @@
 <!-- PARTIAL PhotoLand -->
 <div class="jumbotron text-center">
 	<h1>PhotoLand</h1>
-	<p>Web App desenvolvido em AngularJS. Utiliza a API de imagens do GettyImages. Você pode clicar nos filtros pré-definidos ou utilizar o campo de pesquisa para filtar as imagens.</p>
+	<p>Web App desenvolvido em AngularJS. Utiliza a API de imagens do GettyImages. Utilize o campo de pesquisa abaixo para procurar imagens.</p>
 </div>
-
 
 <section id="photoland-gallery" class="grid img-grid gallery" >
 	<header class="row header gallery__header" >
-		<div class="col-md-4 centered text-centered alone">
-			<input type="text" class="form-control alone text-centered" ng-model="keyword" name="keyword">
-			<div class="alone">
-				<button class="btn btn-primary button-load" ng-click="loadImages(keyword)">Carregar imagens</button>
-			</div>
+		<div class="col-md-4 col-sm-8 form-wrapper centered text-centered alone">
+			<form ng-submit="loadImages(keyword)" name="photoLandForm" class="form">
+				<input type="text" class="form-control alone text-centered" ng-model="keyword" name="keyword">
+				<div class="alone">
+					<button class="btn btn-primary button-load" type="submit">Carregar imagens</button>
+					<loader class="loader wrapper" ng-if="isLoading"></loader>
+				</div>
+			</form>
 		</div>
 	</header>
 	
-	<div class="content gallery__content">
+	<div id="gallery-content" class="content gallery__content">
 		<div class="row gallery-row animated bounceIn" ng-repeat="photoRow in photoRows">	
 			<photo class="item gallery-item item--col-3x3 animated animate bounce" ng-repeat="img in photoRow.images">
 			</photo>

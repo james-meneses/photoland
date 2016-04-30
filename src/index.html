@@ -2,10 +2,13 @@
 <html lang="pt-BR">
 <head>
 	<meta charset="UTF-8">
-	<title>Routing with UI Router</title>
+	<title>Photoland - AngularJS App</title>
+	<meta type="description" content="Web App desenvolvido em AngularJS para busca de imagens usando a API do GettyImages. Confira esse e mais no meu portifolio.">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootswatch/3.2.0/paper/bootstrap.min.css">
 	<link rel="stylesheet" href="css/main.css">
 	
+	<link rel="favicon" type="image/png" href="img/favicon.png">
+
 	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js" ></script>
 	<!-- For Localization -->
 	<script src="http://code.angularjs.org/1.5.0/i18n/angular-locale_pt-br.js" ></script>
@@ -19,36 +22,11 @@
 	<base href="/">
 </head>
 <body ng-app="app">
-	<head class="head" role="heading">
-		<nav class="navbar navbar-inverse" role="navigation">
-    <div class="navbar-header">
 
-        <!-- note the ng-init and ng-click here: -->
-        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Brand</a>
-    </div>
-
-    <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
-        <ul class="nav navbar-nav">
-        	<li ><a ui-sref="home" is-active-nav >Home</a></li>
-        	<li ><a ui-sref="about" is-active-nav >Sobre</a></li>
-        	<li><a ui-sref="photoland" is-active-nav>Photoland App</a></li>
-        </ul>
-    </div>
-</nav>
-	</head>
-	
 	<!-- MAIN Content -->
 	<main class="main">
 		<div class="container">
-			
 			<div ui-view></div>
-
 		</div><!-- END .container -->
 	</main><!-- END main -->
 </body>

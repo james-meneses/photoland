@@ -20,7 +20,8 @@ var gulp         = require('gulp'),
 /* Settings */
 var config = {
     src : {
-        html    : './src/**/*.html',
+        html    : ['./src/**/*.html',
+                    './src/*.html'],
         styles  : './src/styles/**/*.{scss, sass}',
         scripts : './src/app/**/*.js',
         images  : './src/images/**/*.*',
