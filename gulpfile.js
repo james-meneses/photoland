@@ -4,15 +4,9 @@
 
 var gulp         = require('gulp'),
     gutil        = require('gulp-util'),
-    uglify       = require('gulp-uglify'),
-    concat       = require('gulp-concat'),
-    jshint       = require('jshint'),
     autoprefixer = require('gulp-autoprefixer'),
     sass         = require('gulp-sass'),
-    compass      = require('compass-importer'),
-    rename       = require('gulp-rename'),
     sourcemaps   = require('gulp-sourcemaps'),
-    sassdoc      = require('sassdoc'),
     browserify   = require('browserify'),
     source       = require('vinyl-source-stream')
     browserSync  = require('browser-sync').create();
@@ -44,21 +38,13 @@ var config = {
         Tasks
    ================================== */
 
-/* Scripts */
-gulp.task( 'scripts', function() {
-    gulp.src(config.src.scripts)
-        .pipe(concat('all.min.js'))
-        .pipe(gulp.dest(config.dest.js))
-        .pipe(browserSync.stream());
-});
-
 /* Styles */
 gulp.task( 'styles', function() {
     gulp.src( config.src.styles )
-        /*.pipe(sourcemaps.init())*/
+        .pipe(sourcemaps.init())
             .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-        /*.pipe(sourcemaps.write(config.dest.maps))*/
-        /*.pipe(autoprefixer({ browsers: ['last 3 versions'] }))*/
+            .pipe(autoprefixer({ browsers: ['last 3 versions'] }))
+        .pipe(sourcemaps.write(config.dest.maps))
         .pipe(gulp.dest(config.dest.css))
         .pipe(browserSync.stream());
 

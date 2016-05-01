@@ -12,7 +12,7 @@ module.exports = function($scope, $http, $q, $log, imageService){
 
 		filter = (typeof filter == "string") ? filter : 'nature' 
 
-		console.log('we gonna load images of:', filter)
+		// console.log('we gonna load images of:', filter)
 
 		var img = new Image()
 		var promise = imageService.getImages(filter)
