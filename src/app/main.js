@@ -3,13 +3,13 @@
 		Require Modules
 	\* ------------------------------------------------------------ */
 	// Controllers
-	var PhotoLandCtrl = require('./controllers/PhotoLandController')
+	var PhotoLandCtrl = require('controllers/PhotoLandController')
 
 	// Directives
-	var photoLandDirectives = require('./directives/photoLandDirectives')
+	var photoLandDirectives = require('directives/photoLandDirectives')
 
 	// Services
-	var PhotoLandServices = require('./services/PhotoLandServices')
+	var PhotoLandServices = require('services/PhotoLandServices')
 
 
 	var app = angular.module('app', ['ui.bootstrap', 'ngAnimate', 'ui.router'])
@@ -24,7 +24,7 @@
 					url: '/photoland',
 					views: {
 						'': {
-							templateUrl : '../app/partials/photoland.html',
+							templateUrl : 'partials/photoland.html',
 							controller  : 'PhotoLandCtrl'
 						}
 					}
