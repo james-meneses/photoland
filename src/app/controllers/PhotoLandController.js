@@ -19,7 +19,8 @@ module.exports = function($scope, $http, $q, $log, imageService){
 
 		promise.then(
 			function(res) {
-				this.rowIdx = 0
+				if(res.data.images.length > 0 ) {
+					this.rowIdx = 0
 					res.data.images.forEach(function(image, idx){
 						if(idx % 3 === 0) {
 							if(idx>0) this.rowIdx++
@@ -33,9 +34,15 @@ module.exports = function($scope, $http, $q, $log, imageService){
 					// console.log('now its gone', $scope.photoRows)
 					
 					$scope.isLoading = false
-							
+				} else {
+					// !MISSING: implementar mensagem de erro na view para o usuário!
+					
+					console.log("Não foram encontradas imagens relacionadas ao termo pesquisado")
+				}							
 			}, 
-			function(err) {
+			function(err) { 
+				// !MISSING: implementar mensagem de erro na view para o usuário!
+				
 				$log.error('Falha ao carregar imagens: ', err)
 			},
 			function(progress) {
