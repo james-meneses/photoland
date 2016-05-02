@@ -24,7 +24,7 @@
 					url: '/photoland',
 					views: {
 						'': {
-							templateUrl : './app/partials/photoland.html',
+							templateUrl : '../app/partials/photoland.html',
 							controller  : 'PhotoLandCtrl'
 						}
 					}

@@ -24,7 +24,7 @@ var config = {
     dest : {
         html   : './dest/',
         css    : './dest/css/',
-        js     : './dest/js/',
+        js     : './dest/app/',
         img    : './dest/img/',
         vendor : './dest/vendor/',
         maps   : './dest/css/maps/'
